@@ -73,3 +73,5 @@ C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\Ubiety.Dns.C
 C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\Google.Protobuf.xml
 C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\MySql.Data.xml
 C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\Renci.SshNet.xml
+C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\LiteDB.dll
+C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\LiteDB.xml
