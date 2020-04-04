@@ -65,3 +65,11 @@ C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\obj\Debug\lean_t
 C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\obj\Debug\lean_tech_backend_test.csproj.CopyComplete
 C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\obj\Debug\lean_tech_backend_test.dll
 C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\obj\Debug\lean_tech_backend_test.pdb
+C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\BouncyCastle.Crypto.dll
+C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\Google.Protobuf.dll
+C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\MySql.Data.dll
+C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\Renci.SshNet.dll
+C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\Ubiety.Dns.Core.dll
+C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\Google.Protobuf.xml
+C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\MySql.Data.xml
+C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\Renci.SshNet.xml
