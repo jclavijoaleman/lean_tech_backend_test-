@@ -102,12 +102,19 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="index.html" />
+    <Content Include="Views\nosql\index.html" />
     <Content Include="Views\sql\index.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HelloWorldController.cs" />
+    <Compile Include="Controllers\nosql\BolNoSqlController.cs" />
+    <Compile Include="Controllers\nosql\CarrierNoSqlController.cs" />
+    <Compile Include="Controllers\nosql\OderBolNoSqlController.cs" />
+    <Compile Include="Controllers\nosql\OrderNoSqlController.cs" />
+    <Compile Include="Controllers\nosql\ShipmentNoSqlController.cs" />
+    <Compile Include="Controllers\nosql\TypeCarrierNoSqlController.cs" />
     <Compile Include="Controllers\sql\BolController.cs" />
     <Compile Include="Controllers\sql\CarrierController.cs" />
     <Compile Include="Controllers\sql\OrderBolController.cs" />
