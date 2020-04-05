@@ -24,6 +24,13 @@ Test in postman, Add a http request with the url: http://localhost:62272/api/eia
 ![picture](CapturaApiEia.PNG)
 
 
+## Usage Shipment Demo with search
+
+Test in postman, Add a http request with the url: http://localhost:62272/demo/shipment to get information,
+to search with text criteria add param route with the criteria to search 'http://localhost:62272/demo/shipment/Text here' to get information
+
+![picture](CapturaDemoShipment.PNG)
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
