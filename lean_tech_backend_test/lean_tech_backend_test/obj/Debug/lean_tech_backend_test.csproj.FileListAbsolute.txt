@@ -75,3 +75,11 @@ C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\MySql.Data.x
 C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\Renci.SshNet.xml
 C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\LiteDB.dll
 C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\LiteDB.xml
+C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\Microsoft.IdentityModel.Logging.dll
+C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\Microsoft.IdentityModel.Logging.xml
+C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\System.IdentityModel.Tokens.Jwt.xml

@@ -9,6 +9,7 @@ namespace lean_tech_backend_test.Controllers.demo
     public class ShipmentController : ApiController
     {
         // GET: api/Shipment
+        [Authorize(Roles= "admin, readonly")]
         [Route("demo/shipment")]
         public IEnumerable<Shipment> Get()
         {
@@ -52,6 +53,7 @@ namespace lean_tech_backend_test.Controllers.demo
         }
 
         // GET: api/Shipment/5
+        [Authorize(Roles = "admin, readonly")]
         [Route("demo/shipment/{search}")]
         public IEnumerable<Shipment> Get(string search)
         {
@@ -108,22 +110,25 @@ namespace lean_tech_backend_test.Controllers.demo
         }
 
         // POST: api/Shipment
+        [Authorize(Roles = "admin")]
         [HttpPost]
-        [Route("sql/shipments")]
+        [Route("demo/shipment")]
         public void Post(Shipment obj)
         {
         }
 
         // PUT: api/Shipment/5
+        [Authorize(Roles = "admin")]
         [HttpPut]
-        [Route("sql/shipments")]
+        [Route("demo/shipment")]
         public void Put(int id, Shipment obj)
         {
         }
 
         // DELETE: api/Shipment/5
+        [Authorize(Roles = "admin")]
         [HttpDelete]
-        [Route("sql/shipments/{id}")]
+        [Route("demo/shipment/{id}")]
         public void Delete(int id)
         {
         }

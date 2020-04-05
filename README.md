@@ -31,6 +31,31 @@ to search with text criteria add param route with the criteria to search 'http:/
 
 ![picture](CapturaDemoShipment.PNG)
 
+## Usage Authentication with JWT
+
+Test in postman, Add a http request with the url: http://localhost:62272/api/login/authenticate to get TOKEN
+
+![picture](CapturaGetToken.PNG)
+
+In the Headers set Content-type application/json
+
+In the Body set with role "admin" or "readonly"
+
+{
+	"Username": "user",
+	"Password": "123456",
+	"Roles": "readonly"
+}
+
+and then set  type Authorization like Bearer Token and put the token
+
+![picture](CapturaGetShipmetToken.PNG)
+
+
+NO Authorization readonly Role for metheod POST
+
+![picture](CapturaNOAuth.PNG)
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
