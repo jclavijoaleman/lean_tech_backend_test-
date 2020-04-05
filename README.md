@@ -17,6 +17,12 @@ Test in postman, Add a http request with the url: http://localhost:62272/hellowo
 
 ![picture](Captura2.PNG)
 
+## Usage Get current weekly price of Regular Conventional Retail gasoline.
+
+Test in postman, Add a http request with the url: http://localhost:62272/api/eia to get information
+
+![picture](CapturaApiEia.PNG)
+
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
