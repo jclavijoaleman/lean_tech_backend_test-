@@ -56,6 +56,17 @@ NO Authorization readonly Role for metheod POST
 
 ![picture](CapturaNOAuth.PNG)
 
+## Usage Import CSV or XLS
+
+Test in postman, Add a http request with the url: http://localhost:62272/demo/import
+
+![picture](CapturaImport.PNG)
+
+Use this Files 
+
+[CSV](DataSchema.csv)
+[Excel](DataSchema.xlsx)
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 

@@ -17,5 +17,15 @@
 
     <p>Go to Model Resource <a href="http://localhost:62272/demo/shipment">this link</a>.</p>
 
+    <form name="form1" method="post" enctype="multipart/form-data" action="demo/import">
+        <div>
+            <label for="file">Select File</label>
+            <input name="file1" type="file"  accept=".csv,.xls, .xlsx" />
+        </div>
+        <div>
+            <input type="submit" value="Submit" />
+        </div>
+    </form>
+
 </body>
 </html>

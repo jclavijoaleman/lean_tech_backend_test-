@@ -83,3 +83,9 @@ C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\Microsoft.Id
 C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\Microsoft.IdentityModel.Logging.xml
 C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\Microsoft.IdentityModel.Tokens.xml
 C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\ExcelDataReader.dll
+C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\ExcelDataReader.pdb
+C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\ExcelDataReader.xml
+C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\ExcelDataReader.DataSet.dll
+C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\ExcelDataReader.DataSet.pdb
+C:\Jmca\lean-tech\lean_tech_backend_test\lean_tech_backend_test\bin\ExcelDataReader.DataSet.xml
