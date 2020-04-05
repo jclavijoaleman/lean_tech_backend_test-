@@ -29,20 +29,28 @@ namespace lean_tech_backend_test.Controllers
         [Route("authenticate")]
         public IHttpActionResult Authenticate(LoginRequest login)
         {
-            if (login == null)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+            try
+            {
+                if (login == null)
+                    throw new HttpResponseException(HttpStatusCode.BadRequest);
 
-            //TODO: Validate credentials Correctly, this code is only for demo !!
-            bool isCredentialValid = (login.Password == "123456");
-            if (isCredentialValid)
-            {
-                var token = TokenGenerator.GenerateTokenJwt(login.Username, login.Roles);
-                return Ok(token);
+                //TODO: Validate credentials Correctly, this code is only for demo !!
+                bool isCredentialValid = (login.Password == "123456");
+                if (isCredentialValid)
+                {
+                    var token = TokenGenerator.GenerateTokenJwt(login.Username, login.Roles);
+                    return Ok(token);
+                }
+                else
+                {
+                    return Unauthorized();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return Unauthorized();
+                return Ok(ex.Message);
             }
+            
         }
     }
 }

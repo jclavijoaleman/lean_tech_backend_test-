@@ -14,33 +14,46 @@ namespace lean_tech_backend_test.Controllers.sql
         public IEnumerable<Bol> Get()
         {
             var ret = new List<Bol>();
+            var str = Environment.GetEnvironmentVariable("MYSQLCONNSTR_localdb").ToString();
 
-            MySqlDataReader reader = null;
-            MySqlConnection myConnection = new MySqlConnection();
-            myConnection.ConnectionString = @"Server=127.0.0.1;Port=3306;Database=lean_tech_backend_test;Uid=root;Pwd=jmca83;";
-
-            MySqlCommand sqlCmd = new MySqlCommand();
-            sqlCmd.CommandText = "SELECT * FROM bols";
-            sqlCmd.CommandType = CommandType.Text;
-            sqlCmd.Connection = myConnection;
-            myConnection.Open();
-            reader = sqlCmd.ExecuteReader();
-
-            Bol obj = null;
-            while (reader.Read())
+            try
             {
-                obj = new Bol();
-                obj.id = Convert.ToInt32(reader.GetValue(0));
-                obj.name = reader.GetValue(1).ToString();
-                obj.date = Convert.ToDateTime(reader.GetValue(2));
-                obj.instructions = reader.GetValue(3).ToString();
-                obj.items = reader.GetValue(4).ToString();
-                ret.Add(obj);
+                MySqlDataReader reader = null;
+                MySqlConnection myConnection = new MySqlConnection();
+                myConnection.ConnectionString = @"Server=127.0.0.1;Port=49489;Database=lean_tech_backend_test;Uid=azure;Pwd=6#vWHD_$;";
+
+                MySqlCommand sqlCmd = new MySqlCommand();
+                sqlCmd.CommandText = "SELECT * FROM bols";
+                sqlCmd.CommandType = CommandType.Text;
+                sqlCmd.Connection = myConnection;
+                myConnection.Open();
+                reader = sqlCmd.ExecuteReader();
+
+                Bol obj = null;
+                while (reader.Read())
+                {
+                    obj = new Bol();
+                    obj.id = Convert.ToInt32(reader.GetValue(0));
+                    obj.name = reader.GetValue(1).ToString();
+                    obj.date = Convert.ToDateTime(reader.GetValue(2));
+                    obj.instructions = reader.GetValue(3).ToString();
+                    obj.items = reader.GetValue(4).ToString();
+                    ret.Add(obj);
+                }
+
+                myConnection.Close();
+
+                return ret;
             }
-
-            myConnection.Close();
-
-            return ret;
+            catch (Exception ex)
+            {
+                var obj = new Bol();
+                obj.id = 0;
+                obj.name = ex.Message + " " +str;
+                ret.Add(obj);
+                return ret;
+            }
+            
         }
 
         // GET: api/Bol/5
@@ -48,31 +61,41 @@ namespace lean_tech_backend_test.Controllers.sql
         public Bol Get(int id)
         {
 
-            MySqlDataReader reader = null;
-            MySqlConnection myConnection = new MySqlConnection();
-            myConnection.ConnectionString = @"Server=127.0.0.1;Port=3306;Database=lean_tech_backend_test;Uid=root;Pwd=jmca83;";
-
-            MySqlCommand sqlCmd = new MySqlCommand();
-            sqlCmd.CommandText = "SELECT * FROM bols where id_bol = " + id.ToString();
-            sqlCmd.CommandType = CommandType.Text;
-            sqlCmd.Connection = myConnection;
-            myConnection.Open();
-            reader = sqlCmd.ExecuteReader();
-
-            Bol obj = null;
-            while (reader.Read())
+            try
             {
-                obj = new Bol();
-                obj.id = Convert.ToInt32(reader.GetValue(0));
-                obj.name = reader.GetValue(1).ToString();
-                obj.date = Convert.ToDateTime(reader.GetValue(2));
-                obj.instructions = reader.GetValue(3).ToString();
-                obj.items = reader.GetValue(4).ToString();
-            }
+                MySqlDataReader reader = null;
+                MySqlConnection myConnection = new MySqlConnection();
+                myConnection.ConnectionString = @"Server=127.0.0.1;Port=49489;Database=lean_tech_backend_test;Uid=azure;Pwd=6#vWHD_$;";
 
-            myConnection.Close();
+                MySqlCommand sqlCmd = new MySqlCommand();
+                sqlCmd.CommandText = "SELECT * FROM bols where id_bol = " + id.ToString();
+                sqlCmd.CommandType = CommandType.Text;
+                sqlCmd.Connection = myConnection;
+                myConnection.Open();
+                reader = sqlCmd.ExecuteReader();
+
+                Bol obj = null;
+                while (reader.Read())
+                {
+                    obj = new Bol();
+                    obj.id = Convert.ToInt32(reader.GetValue(0));
+                    obj.name = reader.GetValue(1).ToString();
+                    obj.date = Convert.ToDateTime(reader.GetValue(2));
+                    obj.instructions = reader.GetValue(3).ToString();
+                    obj.items = reader.GetValue(4).ToString();
+                }
+
+                myConnection.Close();
 
             return obj;
+            }
+            catch (Exception ex)
+            {
+                var obj = new Bol();
+                obj.id = 0;
+                obj.name = ex.Message;
+                return obj;
+            }
         }
 
         // POST: api/Bol
@@ -81,7 +104,7 @@ namespace lean_tech_backend_test.Controllers.sql
         public void Post(Bol obj)
         {
             MySqlConnection myConnection = new MySqlConnection();
-            myConnection.ConnectionString = @"Server=127.0.0.1;Port=3306;Database=lean_tech_backend_test;Uid=root;Pwd=jmca83;";
+            myConnection.ConnectionString = @"Server=127.0.0.1;Port=49489;Database=lean_tech_backend_test;Uid=azure;Pwd=6#vWHD_$;";
 
             MySqlCommand sqlCmd = new MySqlCommand();
             sqlCmd.CommandType = CommandType.Text;
@@ -110,7 +133,7 @@ namespace lean_tech_backend_test.Controllers.sql
         public void Delete(int id)
         {
             MySqlConnection myConnection = new MySqlConnection();
-            myConnection.ConnectionString = @"Server=127.0.0.1;Port=3306;Database=lean_tech_backend_test;Uid=root;Pwd=jmca83;";
+            myConnection.ConnectionString = @"Server=127.0.0.1;Port=49489;Database=lean_tech_backend_test;Uid=azure;Pwd=6#vWHD_$;";
 
             MySqlCommand sqlCmd = new MySqlCommand();
             sqlCmd.CommandType = CommandType.Text;

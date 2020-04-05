@@ -25,7 +25,7 @@ namespace lean_tech_backend_test.Controllers.demo
 
             MySqlDataReader reader = null;
             MySqlConnection myConnection = new MySqlConnection();
-            myConnection.ConnectionString = @"Server=127.0.0.1;Port=3306;Database=lean_tech_backend_test;Uid=root;Pwd=jmca83;";
+            myConnection.ConnectionString = @"Server=127.0.0.1;Port=49489;Database=lean_tech_backend_test;Uid=azure;Pwd=6#vWHD_$;";
 
             MySqlCommand sqlCmd = new MySqlCommand();
             sqlCmd.CommandText = "SELECT c.NAME , c.dot, c.MC, s.date, s.ORIGIN_COUNTRY, s.ORIGIN_CITY, s.ORIGIN_STATE, s.DESTINATION_COUNTRY, s.DESTINATION_STATE, s.DESTINATION_CITY, s.PICKUP_DATE, s.DELIVERY_DATE, s.STATUS, s.CARRIER_RATE FROM lean_tech_backend_test.shipment s inner join lean_tech_backend_test.carrier c on c.id = s.CARRIER_ID order by s.id desc; ";
@@ -82,7 +82,7 @@ namespace lean_tech_backend_test.Controllers.demo
 
             MySqlDataReader reader = null;
             MySqlConnection myConnection = new MySqlConnection();
-            myConnection.ConnectionString = @"Server=127.0.0.1;Port=3306;Database=lean_tech_backend_test;Uid=root;Pwd=jmca83;";
+            myConnection.ConnectionString = @"Server=127.0.0.1;Port=49489;Database=lean_tech_backend_test;Uid=azure;Pwd=6#vWHD_$;";
 
             MySqlCommand sqlCmd = new MySqlCommand();
             sqlCmd.CommandText = "SELECT c.NAME carriername, c.dot, c.MC, s.date, s.ORIGIN_COUNTRY, s.ORIGIN_CITY, s.ORIGIN_STATE, s.DESTINATION_COUNTRY, s.DESTINATION_STATE, s.DESTINATION_CITY, s.PICKUP_DATE, s.DELIVERY_DATE, s.STATUS, s.CARRIER_RATE FROM lean_tech_backend_test.shipment s inner join lean_tech_backend_test.carrier c on c.id = s.CARRIER_ID " + filter + " order by s.id desc; ";
@@ -117,127 +117,150 @@ namespace lean_tech_backend_test.Controllers.demo
             return ret;
         }
 
-        [HttpPost]
-        [Route("demo/export/{type}")]
-        public HttpResponseMessage Export(string type)
+        [Route("demo/export")]
+        public HttpResponseMessage Export()
         {
-            MemoryStream stream = new MemoryStream();
-            StreamWriter writer = new StreamWriter(stream);
-            writer.Write("Hello, World!");
-            writer.Flush();
-            stream.Position = 0;
+            try
+            {
+                MemoryStream stream = new MemoryStream();
+                StreamWriter writer = new StreamWriter(stream);
+                writer.Write("Hello, World!");
+                writer.Flush();
+                stream.Position = 0;
 
-            HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
-            result.Content = new StreamContent(stream);
-            result.Content.Headers.ContentType = new MediaTypeHeaderValue("text/csv");
-            result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment") { FileName = "Export.csv" };
+                HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
+                result.Content = new StreamContent(stream);
+                result.Content.Headers.ContentType = new MediaTypeHeaderValue("text/csv");
+                result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment") { FileName = "Export.csv" };
 
-            return result;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                var response = Request.CreateResponse(HttpStatusCode.OK, ex.Message);
+                return response;
+            }
+            
         }
 
         
         [Route("demo/import")]
         public async Task<HttpResponseMessage> PostFormData()
         {
-            // Check if the request contains multipart/form-data.
-            if (!Request.Content.IsMimeMultipartContent())
-            {
-                throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
-            }
-
-            string root = HttpContext.Current.Server.MapPath("~/App_Data");
-            var provider = new MultipartFormDataStreamProvider(root);
-            var filename = "";
-            string[] type = null;
-            List<Shipment> obj = new List<Shipment>();
-
             try
             {
-                // Read the form data.
-                await Request.Content.ReadAsMultipartAsync(provider);
-
-                // This illustrates how to get the file names.
-                foreach (MultipartFileData file in provider.FileData)
+                // Check if the request contains multipart/form-data.
+                if (!Request.Content.IsMimeMultipartContent())
                 {
-                    Trace.WriteLine(file.Headers.ContentDisposition.FileName);
-                    type = file.Headers.ContentDisposition.FileName.Split('.');
-                    Trace.WriteLine("Server file path: " + file.LocalFileName);
-                    filename = file.LocalFileName;
+                    throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
                 }
 
-                string ext = type[type.Length - 1].ToString().ToLower();
-                if (ext.Contains("xls"))
+                if (!Directory.Exists(HttpContext.Current.Server.MapPath("~/Data")))
                 {
-                    FileStream stream = File.Open(filename, FileMode.Open, FileAccess.Read);
+                    Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/Data"));
+                }
 
-                    IExcelDataReader excelReader = ext == "xls" ? ExcelReaderFactory.CreateBinaryReader(stream)
-                    : ExcelReaderFactory.CreateOpenXmlReader(stream);
+                string root = HttpContext.Current.Server.MapPath("~/Data");
 
-                    //3. DataSet - The result of each spreadsheet will be created in the result.Tables
-                    DataSet result = excelReader.AsDataSet();
-                    DataTable workSheet = result.Tables[2];
+                var provider = new MultipartFormDataStreamProvider(root);
+                var filename = "";
+                string[] type = null;
+                List<Shipment> obj = new List<Shipment>();
 
-                    foreach (DataRow row in workSheet.Rows)
+                try
+                {
+                    // Read the form data.
+                    await Request.Content.ReadAsMultipartAsync(provider);
+
+                    // This illustrates how to get the file names.
+                    foreach (MultipartFileData file in provider.FileData)
                     {
-                        obj.Add(new Shipment
-                        {
-                            carrier_id = row[0].ToString(),
-                            date = row[1].ToString(),
-                            origin_country = row[2].ToString(),
-                            origin_state = row[3].ToString(),
-                            origin_city = row[4].ToString(),
-                            destination_country = row[5].ToString(),
-                            destination_state = row[6].ToString(),
-                            destination_city = row[7].ToString(),
-                            pickeup = row[8].ToString(),
-                            delivery = row[9].ToString(),
-                            status = row[10].ToString(),
-                            carrier_price = row[11].ToString()
-                        });
+                        Trace.WriteLine(file.Headers.ContentDisposition.FileName);
+                        type = file.Headers.ContentDisposition.FileName.Split('.');
+                        Trace.WriteLine("Server file path: " + file.LocalFileName);
+                        filename = file.LocalFileName;
                     }
 
-                    excelReader.Close();
-
-                }
-                else
-                {
-                    string csvData = System.IO.File.ReadAllText(filename);
-
-                    //Execute a loop over the rows.
-                    foreach (string row in csvData.Split('\n'))
+                    string ext = type[type.Length - 1].ToString().ToLower();
+                    if (ext.Contains("xls"))
                     {
-                        if (!string.IsNullOrEmpty(row))
+                        FileStream stream = File.Open(filename, FileMode.Open, FileAccess.Read);
+
+                        IExcelDataReader excelReader = ext == "xls" ? ExcelReaderFactory.CreateBinaryReader(stream)
+                        : ExcelReaderFactory.CreateOpenXmlReader(stream);
+
+                        //3. DataSet - The result of each spreadsheet will be created in the result.Tables
+                        DataSet result = excelReader.AsDataSet();
+                        DataTable workSheet = result.Tables[2];
+
+                        foreach (DataRow row in workSheet.Rows)
                         {
                             obj.Add(new Shipment
                             {
-                                carrier_id = row.Split(',')[0],
-                                date = row.Split(',')[1],
-                                origin_country = row.Split(',')[2],
-                                origin_state = row.Split(',')[3],
-                                origin_city = row.Split(',')[4],
-                                destination_country = row.Split(',')[5],
-                                destination_state = row.Split(',')[6],
-                                destination_city = row.Split(',')[7],
-                                pickeup = row.Split(',')[8],
-                                delivery = row.Split(',')[9],
-                                status = row.Split(',')[10],
-                                carrier_price = row.Split(',')[11]
+                                carrier_id = row[0].ToString(),
+                                date = row[1].ToString(),
+                                origin_country = row[2].ToString(),
+                                origin_state = row[3].ToString(),
+                                origin_city = row[4].ToString(),
+                                destination_country = row[5].ToString(),
+                                destination_state = row[6].ToString(),
+                                destination_city = row[7].ToString(),
+                                pickeup = row[8].ToString(),
+                                delivery = row[9].ToString(),
+                                status = row[10].ToString(),
+                                carrier_price = row[11].ToString()
                             });
                         }
+
+                        excelReader.Close();
+
+                    }
+                    else
+                    {
+                        string csvData = System.IO.File.ReadAllText(filename);
+
+                        //Execute a loop over the rows.
+                        foreach (string row in csvData.Split('\n'))
+                        {
+                            if (!string.IsNullOrEmpty(row))
+                            {
+                                obj.Add(new Shipment
+                                {
+                                    carrier_id = row.Split(',')[0],
+                                    date = row.Split(',')[1],
+                                    origin_country = row.Split(',')[2],
+                                    origin_state = row.Split(',')[3],
+                                    origin_city = row.Split(',')[4],
+                                    destination_country = row.Split(',')[5],
+                                    destination_state = row.Split(',')[6],
+                                    destination_city = row.Split(',')[7],
+                                    pickeup = row.Split(',')[8],
+                                    delivery = row.Split(',')[9],
+                                    status = row.Split(',')[10],
+                                    carrier_price = row.Split(',')[11]
+                                });
+                            }
+                        }
+
                     }
 
+
+                    var mt = new MediaTypeWithQualityHeaderValue("application/json");
+                    var response = Request.CreateResponse(HttpStatusCode.OK, obj, mt);
+
+                    return response;
                 }
-
-
-                var mt = new MediaTypeWithQualityHeaderValue("application/json");
-                var response = Request.CreateResponse(HttpStatusCode.OK, obj, mt);
-
+                catch (System.Exception)
+                {
+                    throw;
+                }
+            }
+            catch (Exception ex)
+            {
+                var response = Request.CreateResponse(HttpStatusCode.OK, ex.Message);
                 return response;
             }
-            catch (System.Exception e)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
-            }
+            
         }
 
         // POST: api/Shipment

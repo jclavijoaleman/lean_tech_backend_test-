@@ -8,32 +8,32 @@ Donwloand the Project an execute.
 
 ## Usage
 
-Test in postman, Add a http request with the url: http://localhost:62272/holamundo/txt to get text/plain "Hello world"
+Test in postman, Add a http request with the url: http://leantechbackendtest-dev-as.azurewebsites.net/holamundo/txt to get text/plain "Hello world"
 
 ![picture](Captura1.PNG)
 
 
-Test in postman, Add a http request with the url: http://localhost:62272/helloworld/json to get application/json { "message": "Hello world" }
+Test in postman, Add a http request with the url: http://leantechbackendtest-dev-as.azurewebsites.net/helloworld/json to get application/json { "message": "Hello world" }
 
 ![picture](Captura2.PNG)
 
 ## Usage Get current weekly price of Regular Conventional Retail gasoline.
 
-Test in postman, Add a http request with the url: http://localhost:62272/api/eia to get information
+Test in postman, Add a http request with the url: http://leantechbackendtest-dev-as.azurewebsites.net/api/eia to get information
 
 ![picture](CapturaApiEia.PNG)
 
 
 ## Usage Shipment Demo with search
 
-Test in postman, Add a http request with the url: http://localhost:62272/demo/shipment to get information,
-to search with text criteria add param route with the criteria to search 'http://localhost:62272/demo/shipment/Text here' to get information
+Test in postman, Add a http request with the url: http://leantechbackendtest-dev-as.azurewebsites.net/demo/shipment to get information,
+to search with text criteria add param route with the criteria to search 'http://leantechbackendtest-dev-as.azurewebsites.net/demo/shipment/Text here' to get information
 
 ![picture](CapturaDemoShipment.PNG)
 
 ## Usage Authentication with JWT
 
-Test in postman, Add a http request with the url: http://localhost:62272/api/login/authenticate to get TOKEN
+Test in postman, Add a http request with the url: http://leantechbackendtest-dev-as.azurewebsites.net/api/login/authenticate to get TOKEN
 
 ![picture](CapturaGetToken.PNG)
 
@@ -58,7 +58,7 @@ NO Authorization readonly Role for metheod POST
 
 ## Usage Import CSV or XLS
 
-Test in postman, Add a http request with the url: http://localhost:62272/demo/import
+Test in postman, Add a http request with the url: http://leantechbackendtest-dev-as.azurewebsites.net/demo/import
 
 ![picture](CapturaImport.PNG)
 
@@ -70,7 +70,6 @@ Use this Files
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-Please make sure to update tests as appropriate.
 
 ## Versioning
 

@@ -17,7 +17,7 @@ namespace lean_tech_backend_test.Controllers.nosql
 
             MySqlDataReader reader = null;
             MySqlConnection myConnection = new MySqlConnection();
-            myConnection.ConnectionString = @"Server=127.0.0.1;Port=3306;Database=lean_tech_backend_test;Uid=root;Pwd=jmca83;";
+            myConnection.ConnectionString = @"Server=127.0.0.1;Port=49489;Database=lean_tech_backend_test;Uid=azure;Pwd=6#vWHD_$;";
 
             MySqlCommand sqlCmd = new MySqlCommand();
             sqlCmd.CommandText = "SELECT * FROM shipments";
@@ -49,7 +49,7 @@ namespace lean_tech_backend_test.Controllers.nosql
 
             MySqlDataReader reader = null;
             MySqlConnection myConnection = new MySqlConnection();
-            myConnection.ConnectionString = @"Server=127.0.0.1;Port=3306;Database=lean_tech_backend_test;Uid=root;Pwd=jmca83;";
+            myConnection.ConnectionString = @"Server=127.0.0.1;Port=49489;Database=lean_tech_backend_test;Uid=azure;Pwd=6#vWHD_$;";
 
             MySqlCommand sqlCmd = new MySqlCommand();
             sqlCmd.CommandText = "SELECT * FROM shipments where id_shipment = " + id.ToString();

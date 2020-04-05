@@ -17,7 +17,7 @@ namespace lean_tech_backend_test.Controllers.sql
 
             MySqlDataReader reader = null;
             MySqlConnection myConnection = new MySqlConnection();
-            myConnection.ConnectionString = @"Server=127.0.0.1;Port=3306;Database=lean_tech_backend_test;Uid=root;Pwd=jmca83;";
+            myConnection.ConnectionString = @"Server=127.0.0.1;Port=49489;Database=lean_tech_backend_test;Uid=azure;Pwd=6#vWHD_$;";
 
             MySqlCommand sqlCmd = new MySqlCommand();
             sqlCmd.CommandText = "SELECT * FROM type_carrier";
@@ -47,7 +47,7 @@ namespace lean_tech_backend_test.Controllers.sql
 
             MySqlDataReader reader = null;
             MySqlConnection myConnection = new MySqlConnection();
-            myConnection.ConnectionString = @"Server=127.0.0.1;Port=3306;Database=lean_tech_backend_test;Uid=root;Pwd=jmca83;";
+            myConnection.ConnectionString = @"Server=127.0.0.1;Port=49489;Database=lean_tech_backend_test;Uid=azure;Pwd=6#vWHD_$;";
 
             MySqlCommand sqlCmd = new MySqlCommand();
             sqlCmd.CommandText = "SELECT * FROM type_carrier where id_type = " + id.ToString();
@@ -75,7 +75,7 @@ namespace lean_tech_backend_test.Controllers.sql
         public void Post(TypeCarrier obj)
         {
             MySqlConnection myConnection = new MySqlConnection();
-            myConnection.ConnectionString = @"Server=127.0.0.1;Port=3306;Database=lean_tech_backend_test;Uid=root;Pwd=jmca83;";
+            myConnection.ConnectionString = @"Server=127.0.0.1;Port=49489;Database=lean_tech_backend_test;Uid=azure;Pwd=6#vWHD_$;";
 
             MySqlCommand sqlCmd = new MySqlCommand();
             sqlCmd.CommandType = CommandType.Text;
@@ -100,7 +100,7 @@ namespace lean_tech_backend_test.Controllers.sql
         public void Delete(int id)
         {
             MySqlConnection myConnection = new MySqlConnection();
-            myConnection.ConnectionString = @"Server=127.0.0.1;Port=3306;Database=lean_tech_backend_test;Uid=root;Pwd=jmca83;";
+            myConnection.ConnectionString = @"Server=127.0.0.1;Port=49489;Database=lean_tech_backend_test;Uid=azure;Pwd=6#vWHD_$;";
 
             MySqlCommand sqlCmd = new MySqlCommand();
             sqlCmd.CommandType = CommandType.Text;
